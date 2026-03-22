@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RGB Back Cover Tester</string>
+
+    <!-- Main Screen -->
+    <string name="system_status">System Status</string>
+    <string name="root_access">Root Access</string>
+    <string name="checking">Checking…</string>
+    <string name="available">Available</string>
+    <string name="not_available">Not Available</string>
+    <string name="devices_found">Devices Found</string>
+
+    <!-- Device Selection -->
+    <string name="select_device">Select Device</string>
+    <string name="no_devices">No RGB devices detected</string>
+    <string name="scanning">Scanning for devices…</string>
+
+    <!-- Color Control -->
+    <string name="color_preview">Color Preview</string>
+    <string name="brightness">Brightness</string>
+    <string name="color_presets">Color Presets</string>
+    <string name="tap_to_change">Tap to change color</string>
+
+    <!-- Effects -->
+    <string name="led_effects">LED Effects</string>
+    <string name="effect_off">Off</string>
+    <string name="effect_static">Static</string>
+    <string name="effect_breathing">Breathing</string>
+    <string name="effect_flash">Flash</string>
+    <string name="effect_rainbow">Rainbow</string>
+    <string name="effect_heartbeat">Heartbeat</string>
+    <string name="effect_music">Music</string>
+
+    <!-- Buttons -->
+    <string name="power_on">Power On</string>
+    <string name="power_off">Power Off</string>
+    <string name="run_test">Run Test</string>
+    <string name="apply">Apply</string>
+    <string name="cancel">Cancel</string>
+    <string name="retry">Retry</string>
+    <string name="exit">Exit</string>
+
+    <!-- Tests -->
+    <string name="select_test">Select Test</string>
+    <string name="full_rgb_test">Full RGB Test</string>
+    <string name="breathing_test">Breathing Effect Test</string>
+    <string name="flash_test">Flash Effect Test</string>
+    <string name="rainbow_test">Rainbow Effect Test</string>
+    <string name="channel_test">Channel Test</string>
+    <string name="testing_red">Testing RED channel…</string>
+    <string name="testing_green">Testing GREEN channel…</string>
+    <string name="testing_blue">Testing BLUE channel…</string>
+    <string name="testing_white">Testing WHITE (all channels)…</string>
+    <string name="test_completed">Test completed</string>
+    <string name="test_failed">Test failed</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="effects_title">Effects</string>
+
+    <!-- Dialogs -->
+    <string name="root_required_title">Root Required</string>
+    <string name="root_required_message">This app requires root access to control RGB LEDs via sysfs.\n\nPlease ensure:\n1. Your device is rooted\n2. You grant root permission when prompted\n3. SELinux is set to Permissive if needed</string>
+    <string name="select_color">Select Color</string>
+
+    <!-- Menu -->
+    <string name="action_refresh">Refresh Devices</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_clear_log">Clear Log</string>
+
+    <!-- Log -->
+    <string name="operation_log">Operation Log</string>
+
+    <!-- Notifications -->
+    <string name="color_applied">Color applied successfully</string>
+    <string name="color_failed">Failed to apply color</string>
+    <string name="device_selected">Device selected: %s</string>
+    <string name="effect_applied">Effect applied: %s</string>
+
+    <!-- Errors -->
+    <string name="error_no_device">No device selected</string>
+    <string name="error_no_root">Root access denied</string>
+    <string name="error_write_failed">Failed to write to sysfs</string>
+    <string name="error_device_not_found">Device path not found</string>
+</resources>

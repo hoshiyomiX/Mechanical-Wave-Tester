@@ -1,0 +1,108 @@
+name: Android CI Build
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:  # Manual trigger
+
+jobs:
+  build:
+    name: Build APK
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: gradle
+
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+
+    - name: Build Debug APK
+      run: ./gradlew assembleDebug --stacktrace
+
+    - name: Build Release APK
+      run: ./gradlew assembleRelease --stacktrace
+
+    - name: Upload Debug APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: app-debug
+        path: app/build/outputs/apk/debug/*.apk
+
+    - name: Upload Release APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: app-release-unsigned
+        path: app/build/outputs/apk/release/*.apk
+
+  release:
+    name: Create Release
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Download Debug APK
+      uses: actions/download-artifact@v4
+      with:
+        name: app-debug
+        path: apk-debug
+
+    - name: Download Release APK
+      uses: actions/download-artifact@v4
+      with:
+        name: app-release-unsigned
+        path: apk-release
+
+    - name: Get version info
+      id: version
+      run: |
+        VERSION=$(date +'%Y.%m.%d')
+        BUILD_NUM=$(git rev-parse --short HEAD)
+        echo "version=$VERSION" >> $GITHUB_OUTPUT
+        echo "build_number=$BUILD_NUM" >> $GITHUB_OUTPUT
+
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: v${{ steps.version.outputs.version }}-${{ steps.version.outputs.build_number }}
+        name: Mechanical Wave Tester v${{ steps.version.outputs.version }}
+        body: |
+          ## 🌊 Mechanical Wave Tester
+          
+          **Build:** ${{ steps.version.outputs.build_number }}
+          **Date:** ${{ steps.version.outputs.version }}
+          
+          ### 📱 Downloads
+          - **Debug APK**: `app-debug.apk` - For testing (signed with debug key)
+          - **Release APK**: `app-release-unsigned.apk` - Production build (unsigned)
+          
+          ### ⚙️ Requirements
+          - Android 8.0+ (API 26)
+          - **Rooted device** (required for sysfs access)
+          - Infinix X6873 or compatible device
+          
+          ### 🎯 Features
+          - RGB LED control via sysfs
+          - Color picker with brightness adjustment
+          - LED effects: Static, Breathing, Flash, Rainbow
+          - Full channel testing
+          - Device auto-detection
+        files: |
+          apk-debug/*.apk
+          apk-release/*.apk
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

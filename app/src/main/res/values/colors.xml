@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base Theme Colors -->
+    <color name="colorPrimary">#4CAF50</color>
+    <color name="colorPrimaryDark">#388E3C</color>
+    <color name="colorAccent">#2196F3</color>
+
+    <!-- Background Colors -->
+    <color name="backgroundDark">#121212</color>
+    <color name="backgroundCard">#2D2D2D</color>
+    <color name="backgroundCardDark">#1E1E1E</color>
+
+    <!-- Text Colors -->
+    <color name="textPrimary">#FFFFFF</color>
+    <color name="textSecondary">#B0B0B0</color>
+    <color name="textHint">#808080</color>
+
+    <!-- Status Colors -->
+    <color name="statusSuccess">#4CAF50</color>
+    <color name="statusWarning">#FF9800</color>
+    <color name="statusError">#F44336</color>
+    <color name="statusInfo">#2196F3</color>
+
+    <!-- RGB Preset Colors -->
+    <color name="ledRed">#FF0000</color>
+    <color name="ledGreen">#00FF00</color>
+    <color name="ledBlue">#0000FF</color>
+    <color name="ledWhite">#FFFFFF</color>
+    <color name="ledYellow">#FFFF00</color>
+    <color name="ledCyan">#00FFFF</color>
+    <color name="ledMagenta">#FF00FF</color>
+    <color name="ledOrange">#FFA500</color>
+    <color name="ledPurple">#800080</color>
+    <color name="ledPink">#FFC0CB</color>
+</resources>
